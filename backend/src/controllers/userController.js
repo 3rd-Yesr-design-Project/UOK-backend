@@ -2,9 +2,18 @@ import userService from "../services/userService";
 import resHelper from "../utils/Helpers/resHelper";
 
 class UserConatroller{
-    async loginUser(req,res){
+    async socialLogin(req,res){
         try {
-            const user = await userService.loginUser(req.body);
+            const user = await userService.socialLogin(req.body);
+            resHelper.responseData(res,user)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async resultLogin(req,res){
+        try {
+            const user = await userService.resultLogin(req.body);
             resHelper.responseData(res,user)
         } catch (error) {
             console.log(error)

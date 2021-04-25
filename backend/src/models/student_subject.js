@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  const subject = sequelize.define(
-    'subjects',
+  const studentSubject = sequelize.define(
+    'student_subjects',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -8,21 +8,17 @@ module.exports = function (sequelize, DataTypes) {
         primaryKey: true,
         allowNull: false,
       },
-      subject_code: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-      },
-      subject: {
-        type: DataTypes.STRING(300),
-        allowNull: false,
-      },
-      year: {
+      student_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      semester: {
+      subject_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      result: {
+        type: DataTypes.STRING(2),
+        allowNull: true,
       },
       created_at: {
         type: DataTypes.DATE,
@@ -40,13 +36,5 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  subject.associate = function (models) {
-    subject.belongsToMany(models.users, {
-      through: 'student_subjects',
-      as: 'subjects',
-      foreignKey: 'subject_id',
-    });
-  };
-
-  return subject;
+  return studentSubject;
 };

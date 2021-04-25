@@ -1,10 +1,21 @@
 import jwt from 'jsonwebtoken';
 
 class JwtHelper{
-    createToken(userId,userType){
+    createResultLoginToken(userId,userType,email){
         const payload = {
             userId: userId,
-            userType: userType
+            userType: userType,
+            emial: email
+        }
+
+        return jwt.sign(payload,"New key")
+    }
+
+    createSocialLoginToken(userId,userType,email){
+        const payload = {
+            userId: userId,
+            userType: userType,
+            emial: email
         }
 
         return jwt.sign(payload,"New key")

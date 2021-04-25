@@ -2,23 +2,27 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('users', {
+    await queryInterface.createTable('lecturers', {
       id: {
         type: Sequelize.INTEGER,
-        primaryKey: true,
+        allowNull: true,
         autoIncrement: true,
+        primaryKey: true,
+      },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id',
+        },
+      },
+      name: {
+        type: Sequelize.STRING(250),
         allowNull: false,
       },
-      user_type: {
-        type: Sequelize.ENUM('lecturer', 'demo', 'student'),
-        allowNull: false,
-      },
-      email: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-      },
-      password: {
-        type: Sequelize.STRING(300),
+      lecturer_no: {
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
       created_at: {
@@ -33,6 +37,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('users');
+    await queryInterface.dropTable('lecturers');
   },
 };
