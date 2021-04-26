@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('student_subjects', {
+    await queryInterface.createTable('results', {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -24,6 +24,10 @@ module.exports = {
           model: 'subjects',
           key: 'id',
         },
+      },
+      academic_year: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
       },
       result: {
         type: Sequelize.STRING(2),

@@ -1,10 +1,11 @@
-import express from 'express';
+import express, { Router } from 'express';
 import commentController from '../controllers/commentController';
 import likeController from '../controllers/likeController';
 import postController from '../controllers/postController';
 import profileController from '../controllers/profileController';
 import subjectController from '../controllers/subjectController';
 import userController from '../controllers/userController';
+import authentication from '../middleware/authentication';
 
 const route = express.Router();
 
@@ -37,15 +38,23 @@ route.post('/api/v1/subject', subjectController.addSubject); // remove after cre
 route.post('/api/v1/subject/user', subjectController.addSubjectByUserId); // remove after the project
 
 route.get(
-  '/api/v1/subject/:userId/:year',
-  subjectController.fetchSubjectByUserIdAndYear
+  '/api/v1/student/subject/:year',
+  authentication.GrantAccess(),
+  subjectController.fetchSubjectByStudentIdAndYear
 );
-route.put('/api/v1/subject/result/:id', subjectController.addSubjectResult);
+// route.put('/api/v1/subject/result/:id', subjectController.addSubjectResult);
+// route.get(
+//   '/api/v1/user/subject/:year/:studentNo',
+//   subjectController.fetchStudentSubjectByStudentNoAndYear
+// );
 route.get(
-  '/api/v1/user/subject/:year/:studentNo',
-  subjectController.fetchStudentSubjectByStudentNoAndYear
+  '/api/v1/year/subject/:year',
+  authentication.GrantAccess(),
+  subjectController.fetchSubjectByYear
 );
-route.get('/api/v1/subject-year/:year', subjectController.fetchSubjectByYear);
-route.get('/api/v1/subject/:year');
+route.get(
+  '/api/v1/subject/:academicYear/:subjectId',
+  subjectController.fetchStudentsBySubjectAndAcedemicYear
+);
 
 export default route;

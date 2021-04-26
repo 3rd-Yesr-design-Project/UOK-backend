@@ -1,6 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
-  const studentSubject = sequelize.define(
-    'student_subjects',
+  const result = sequelize.define(
+    'results',
     {
       id: {
         type: DataTypes.INTEGER,
@@ -14,6 +14,10 @@ module.exports = function (sequelize, DataTypes) {
       },
       subject_id: {
         type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      academic_year: {
+        type: DataTypes.STRING(10),
         allowNull: false,
       },
       result: {
@@ -36,5 +40,10 @@ module.exports = function (sequelize, DataTypes) {
     }
   );
 
-  return studentSubject;
+  result.associate = function (models) {
+    result.belongsTo(models.students, { foreignKey: 'student_id' });
+    result.belongsTo(models.subjects, { foreignKey: 'subject_id' });
+  };
+
+  return result;
 };

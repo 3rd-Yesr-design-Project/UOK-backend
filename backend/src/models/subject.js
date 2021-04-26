@@ -41,11 +41,12 @@ module.exports = function (sequelize, DataTypes) {
   );
 
   subject.associate = function (models) {
-    subject.belongsToMany(models.users, {
-      through: 'student_subjects',
-      as: 'subjects',
-      foreignKey: 'subject_id',
-    });
+    // subject.belongsToMany(models.students, {
+    //   through: 'results',
+    //   // as: 'students',
+    //   // foreignKey: 'subject_id',
+    // });
+    subject.hasMany(models.results, { foreignKey: 'subject_id' });
   };
 
   return subject;

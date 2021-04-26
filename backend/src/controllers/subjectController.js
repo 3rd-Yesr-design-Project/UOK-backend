@@ -25,12 +25,11 @@ class SubjectController {
     }
   }
 
-  async fetchSubjectByUserIdAndYear(req, res) {
+  async fetchSubjectByStudentIdAndYear(req, res) {
     try {
-      const userId = req.params.userId;
       const year = req.params.year;
-      const subjects = await subjectService.fetchSubjectByUserIdAndYear(
-        userId,
+      const subjects = await subjectService.fetchSubjectByStudentIdAndYear(
+        req.user,
         year
       );
       console.log(subjects);
@@ -78,6 +77,20 @@ class SubjectController {
     try {
       const subjects = await subjectService.fetchSubjectByYear(req.params.year);
       resHelper.responseData(res, subjects);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async fetchStudentsBySubjectAndAcedemicYear(req, res) {
+    try {
+      const academicYear = req.params.academicYear;
+      const subjectId = req.params.subjectId;
+      const students = await subjectService.fetchStudentsBySubjectAndAcedemicYear(
+        subjectId,
+        academicYear
+      );
+      resHelper.responseData(res, students);
     } catch (error) {
       console.log(error);
     }

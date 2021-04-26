@@ -1,5 +1,8 @@
+import { Op } from 'sequelize';
+
 const Subject = require('../models').subjects;
-const StudentSubject = require('../models').student_subjects;
+const Student = require('../models').students;
+const Result = require('../models').results;
 const User = require('../models').users;
 
 class SubjectRepository {
@@ -9,11 +12,11 @@ class SubjectRepository {
   }
 
   addSubjectByUserId(body) {
-    return StudentSubject.create(body); //remove after the project
+    return Result.create(body); //remove after the project
   }
 
-  async fetchSubjectByUserIdAndYear(userId, year) {
-    return User.findOne({
+  async fetchSubjectByStudentIdAndYear(studentId, year) {
+    return Student.findOne({
       attributes: [],
       include: [
         {
@@ -25,7 +28,7 @@ class SubjectRepository {
         },
       ],
       where: {
-        id: userId,
+        id: studentId,
       },
     });
   }
@@ -47,7 +50,7 @@ class SubjectRepository {
   }
 
   updateResult(id, body) {
-    return StudentSubject.update(body, {
+    return Result.update(body, {
       where: {
         id: id,
       },
@@ -56,6 +59,16 @@ class SubjectRepository {
 
   fetchSubjectByYear(year) {
     return Subject.findAll({ where: { year } });
+  }
+
+  fetchStudentsBySubjectAndAcedemicYear(subjectId, academicYear) {
+    return Result.findAll({
+      include: [{ model: Student }],
+      where: {
+        subject_id: subjectId,
+        academic_year: academicYear,
+      },
+    });
   }
 }
 
