@@ -1,28 +1,26 @@
-import postRepository from "../repositories/postRepository";
+import postRepository from '../repositories/postRepository';
 
-class PostService{
+class PostService {
+  createPost(user, requestBody) {
+    const { title, postUrl, description } = requestBody;
 
-    createPost(requestBody){
-        const {userId,title,postUrl,description} = requestBody;
+    const body = {
+      user_id: user.userId,
+      title: title,
+      post_url: postUrl,
+      description: description,
+    };
 
-        const body = {
-            user_id: userId,
-            title: title,
-            post_url: postUrl,
-            description: description
-        }
+    return postRepository.createPost(body);
+  }
 
-        return postRepository.createPost(body);
-    }
+  deletePost(postId) {
+    return postRepository.deletePost(postId);
+  }
 
-    deletePost(postId){
-        return postRepository.deletePost(postId)
-    }
-
-    fetchPosts(){
-        return postRepository.fetchPosts();
-    }
-
+  fetchPosts() {
+    return postRepository.fetchPosts();
+  }
 }
 
 const postService = new PostService();

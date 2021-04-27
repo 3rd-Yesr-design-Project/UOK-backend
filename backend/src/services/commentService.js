@@ -1,23 +1,21 @@
-import commentRepository from "../repositories/commentRepository";
+import commentRepository from '../repositories/commentRepository';
 
-class CommentService{
+class CommentService {
+  createComment(user, requestBody) {
+    const { postId, comment } = requestBody;
 
-    createComment(requestBody){
-        const {userId,postId,comment} = requestBody;
+    const body = {
+      user_id: user.userId,
+      post_id: postId,
+      comment: comment,
+    };
 
-        const body = {
-            user_id: userId,
-            post_id: postId,
-            comment: comment
-        }
+    return commentRepository.createComment(body);
+  }
 
-        return commentRepository.createComment(body);
-    }
-
-    deleteComment(commentId){
-        
-        return commentRepository.deleteComment(commentId);
-    }
+  deleteComment(commentId) {
+    return commentRepository.deleteComment(commentId);
+  }
 }
 
 const commentService = new CommentService();

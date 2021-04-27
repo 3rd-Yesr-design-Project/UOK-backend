@@ -17,21 +17,37 @@ route.post('/api/v1/result/login', userController.resultLogin);
 route.get('/api/v1/user/:id', userController.fetchUserById);
 
 //profile
-route.post('/api/v1/profile', profileController.createProfile);
+route.post(
+  '/api/v1/profile',
+  authentication.GrantAccess(),
+  profileController.createProfile
+);
 route.put('/api/v1/profile/:profileId', profileController.updateProfile);
 route.get('/api/v1/profile/:userId', profileController.fetchProfileByUserId);
 
 //Post
-route.post('/api/v1/post', postController.createPost);
+route.post(
+  '/api/v1/post',
+  authentication.GrantAccess(),
+  postController.createPost
+);
 route.delete('/api/v1/post/:postId', postController.deletePost);
 route.get('/api/v1/posts', postController.fetchPosts);
 
 //comment
-route.post('/api/v1/comment', commentController.createComment);
+route.post(
+  '/api/v1/comment',
+  authentication.GrantAccess(),
+  commentController.createComment
+);
 route.delete('/api/v1/comment/:commentId', commentController.deleteCommnet);
 
 //like
-route.put('/api/v1/like/:postId', likeController.updateLike);
+route.put(
+  '/api/v1/like/:postId',
+  authentication.GrantAccess(),
+  likeController.updateLike
+);
 
 //subject
 route.post('/api/v1/subject', subjectController.addSubject); // remove after create the project
