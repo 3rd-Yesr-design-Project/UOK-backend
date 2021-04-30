@@ -1,3 +1,10 @@
+/*
+ * @Author: Anjana (anjanashakthi95@gmail.com)
+ * @Date: 2021-04-30 06:20:38
+ * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-04-30 06:20:38
+ */
+
 import profileRepository from '../repositories/profileRepository';
 
 class ProfileService {

@@ -1,3 +1,10 @@
+/*
+ * @Author: Anjana (anjanashakthi95@gmail.com)
+ * @Date: 2021-04-30 06:20:59
+ * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-04-30 06:20:59
+ */
+
 import userRepository from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwtHelper from '../utils/Helpers/jwtHelper';

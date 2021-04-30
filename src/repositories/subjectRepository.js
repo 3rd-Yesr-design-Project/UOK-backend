@@ -1,3 +1,10 @@
+/*
+ * @Author: Anjana (anjanashakthi95@gmail.com)
+ * @Date: 2021-04-30 06:22:45
+ * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-04-30 06:22:45
+ */
+
 import { Op } from 'sequelize';
 
 const Subject = require('../models').subjects;

@@ -1,3 +1,10 @@
+/*
+ * @Author: Anjana (anjanashakthi95@gmail.com)
+ * @Date: 2021-04-30 06:19:29
+ * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-04-30 06:19:29
+ */
+
 import profileService from '../services/profileService';
 import resHelper from '../utils/Helpers/resHelper';
 
