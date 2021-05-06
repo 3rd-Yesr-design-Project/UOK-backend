@@ -25,7 +25,7 @@ route.post(
 );
 route.put('/api/v1/profile/:profileId', profileController.updateProfile);
 route.get(
-  '/api/v1/profile',
+  '/api/v1/profile/:userId',
   authentication.GrantAccess(),
   profileController.fetchProfileByUserId
 );

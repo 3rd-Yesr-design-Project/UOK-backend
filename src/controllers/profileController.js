@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:29
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-05 22:52:02
+ * @Last Modified time: 2021-05-06 22:00:55
  */
 
 import profileService from '../services/profileService';
@@ -30,10 +30,12 @@ class ProfileController {
   }
 
   async fetchProfileByUserId(req, res) {
+    console.log(req.params.userId);
     try {
       const profile = await profileService.fetchProfileByUserId(
-        req.user.userId
+        req.params.userId
       );
+      console.log('xxxxxxxxxxxxxxxx', profile);
       resHelper.responseData(res, profile);
     } catch (error) {
       resHelper.serverFailing(res, error.message);
