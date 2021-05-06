@@ -12,13 +12,13 @@ module.exports = {
       user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: 'users',
-          key: 'id',
-        },
       },
       profile_url: {
         type: Sequelize.STRING(500),
+        allowNull: true,
+      },
+      mobile: {
+        type: Sequelize.STRING(15),
         allowNull: true,
       },
       birthday: {
@@ -31,15 +31,27 @@ module.exports = {
       },
       gender: {
         type: Sequelize.ENUM('male', 'femail'),
+        allowNull: false,
+      },
+      language: {
+        type: Sequelize.STRING(50),
+        allowNull: false,
+      },
+      religioun: {
+        type: Sequelize.STRING(50),
+        allowNull: true,
+      },
+      working_place: {
+        type: Sequelize.STRING(300),
         allowNull: true,
       },
       school: {
         type: Sequelize.STRING(300),
-        allowNull: false,
+        allowNull: true,
       },
       university: {
         type: Sequelize.STRING(300),
-        allowNull: false,
+        allowNull: true,
       },
       home_town: {
         type: Sequelize.STRING(200),

@@ -1,13 +1,15 @@
 /*
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
- * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-04-30 06:20:59
+ * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-05-06 10:59:14
  */
 
 import userRepository from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwtHelper from '../utils/Helpers/jwtHelper';
+import studentRepository from '../repositories/studentRepository';
+import lecturerRepository from '../repositories/lecturerRepository';
 
 class UserService {
   async socialLogin(requestBody) {
@@ -22,7 +24,11 @@ class UserService {
       throw new Error('Your password is not Match');
     }
 
-    const token = jwtHelper.createSocialLoginToken(user.id, user.user_type);
+    const token = jwtHelper.createSocialLoginToken(
+      user.id,
+      user.user_type,
+      user.email
+    );
     const loginUser = {
       id: user.id,
       name: user.name,
@@ -72,6 +78,13 @@ class UserService {
     };
 
     return userRepository.createUser(body);
+  }
+
+  async fetchUsers() {
+    const students = await studentRepository.fetchStudents();
+    const lecturers = await lecturerRepository.fetchLecturers();
+    const friend = [...students, ...lecturers];
+    return friend;
   }
 }
 

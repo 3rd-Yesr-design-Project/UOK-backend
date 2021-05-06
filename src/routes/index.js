@@ -15,6 +15,7 @@ route.post('/api/v1/social/login', userController.socialLogin);
 route.post('/api/v1/result/login', userController.resultLogin);
 // route.put('/api/v1/user/profile/:userId',userController.createProfile);
 route.get('/api/v1/user/:id', userController.fetchUserById);
+route.get('/api/v1/all-user', userController.fetchUsers);
 
 //profile
 route.post(
@@ -23,7 +24,11 @@ route.post(
   profileController.createProfile
 );
 route.put('/api/v1/profile/:profileId', profileController.updateProfile);
-route.get('/api/v1/profile/:userId', profileController.fetchProfileByUserId);
+route.get(
+  '/api/v1/profile',
+  authentication.GrantAccess(),
+  profileController.fetchProfileByUserId
+);
 
 //Post
 route.post(

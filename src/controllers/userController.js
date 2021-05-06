@@ -1,8 +1,8 @@
 /*
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
- * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-04-30 06:19:50
+ * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-05-06 10:37:22
  */
 
 import userService from '../services/userService';
@@ -51,6 +51,15 @@ class UserConatroller {
     try {
       const user = await userService.addUser(req.body);
       resHelper.created(res, user);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async fetchUsers(req, res) {
+    try {
+      const users = await userService.fetchUsers();
+      resHelper.responseData(res, users);
     } catch (error) {
       console.log(error);
     }
