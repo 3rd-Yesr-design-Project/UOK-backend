@@ -30,13 +30,13 @@ const smtpTransport = nodemailer.createTransport({
 });
 
 class EmailService {
-  sendMail(email, subject) {
+  sendMail(email, subject, template) {
     const mailOptions = {
       from: 'shakthi.10jaya@gmail.com',
       to: email,
       subject: subject,
       generateTextFromHTML: true,
-      html: '<b>test</b>',
+      html: template,
     };
 
     smtpTransport.sendMail(mailOptions, (error, response) => {
@@ -45,3 +45,5 @@ class EmailService {
     });
   }
 }
+
+export default new EmailService();
