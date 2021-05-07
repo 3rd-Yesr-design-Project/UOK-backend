@@ -19,11 +19,11 @@ route.get('/api/v1/all-user', userController.fetchUsers);
 route.post('/api/v1/user/forgetpassword', userController.fogetPassword);
 
 //profile
-route.post(
-  '/api/v1/profile',
-  authentication.GrantAccess(),
-  profileController.createProfile
-);
+// route.post(
+//   '/api/v1/profile',
+//   authentication.GrantAccess(),
+//   profileController.createProfile
+// );
 route.put('/api/v1/profile/:profileId', profileController.updateProfile);
 route.get(
   '/api/v1/profile/:userId',

@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-07 08:52:48
+ * @Last Modified time: 2021-05-07 10:54:01
  */
 
 import userRepository from '../repositories/userRepository';
@@ -91,14 +91,18 @@ class UserService {
 
   async fogetPassword(requestBody) {
     const { email } = requestBody;
-    const existUser = userRepository.fetchUserByEmail(email);
+    const existUser = await userRepository.fetchUserByEmail(email);
     if (!existUser) {
       throw new Error('Your Email does not exist');
     }
-    const link = `${process.env.MAIN_URL}/restPassword/${existUser.id}`;
+    const link = `${process.env.MAIN_URL}/resetPassword/${existUser.id}`;
     const subject = 'Reset Your Password';
     const template = emailTemplateHelper.forgetPasswordTemplate(link);
     emailService.sendMail(email, subject, template);
+  }
+
+  resetPassword(userId, requestBody) {
+    const { passWord } = requestBody;
   }
 }
 

@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-07 08:42:43
+ * @Last Modified time: 2021-05-07 10:37:14
  */
 
 import userService from '../services/userService';
@@ -68,6 +68,16 @@ class UserConatroller {
   async fogetPassword(req, res) {
     try {
       await userService.fogetPassword(req.body);
+      resHelper.updated(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async resetPassword(req, res) {
+    try {
+      const userId = req.params.userId;
+      await userService.resetPassword(userId, req.body);
       resHelper.updated(res);
     } catch (error) {
       console.log(error);
