@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-06 10:59:14
+ * @Last Modified time: 2021-05-07 08:52:48
  */
 
 import userRepository from '../repositories/userRepository';
@@ -10,6 +10,8 @@ import bcrypt from 'bcrypt';
 import jwtHelper from '../utils/Helpers/jwtHelper';
 import studentRepository from '../repositories/studentRepository';
 import lecturerRepository from '../repositories/lecturerRepository';
+import emailTemplateHelper from '../utils/Helpers/emailTemplateHelper';
+import emailService from './emailService';
 
 class UserService {
   async socialLogin(requestBody) {
@@ -85,6 +87,18 @@ class UserService {
     const lecturers = await lecturerRepository.fetchLecturers();
     const friend = [...students, ...lecturers];
     return friend;
+  }
+
+  async fogetPassword(requestBody) {
+    const { email } = requestBody;
+    const existUser = userRepository.fetchUserByEmail(email);
+    if (!existUser) {
+      throw new Error('Your Email does not exist');
+    }
+    const link = `${process.env.MAIN_URL}/restPassword/${existUser.id}`;
+    const subject = 'Reset Your Password';
+    const template = emailTemplateHelper.forgetPasswordTemplate(link);
+    emailService.sendMail(email, subject, template);
   }
 }
 

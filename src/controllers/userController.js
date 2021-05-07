@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-06 10:37:22
+ * @Last Modified time: 2021-05-07 08:42:43
  */
 
 import userService from '../services/userService';
@@ -60,6 +60,15 @@ class UserConatroller {
     try {
       const users = await userService.fetchUsers();
       resHelper.responseData(res, users);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async fogetPassword(req, res) {
+    try {
+      await userService.fogetPassword(req.body);
+      resHelper.updated(res);
     } catch (error) {
       console.log(error);
     }
