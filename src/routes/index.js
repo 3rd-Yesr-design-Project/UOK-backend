@@ -17,6 +17,7 @@ route.post('/api/v1/result/login', userController.resultLogin);
 route.get('/api/v1/user/:id', userController.fetchUserById);
 route.get('/api/v1/all-user', userController.fetchUsers);
 route.post('/api/v1/user/forgetpassword', userController.fogetPassword);
+route.post('/api/v1/user/resetpassword', userController.resetPassword);
 
 //profile
 // route.post(
