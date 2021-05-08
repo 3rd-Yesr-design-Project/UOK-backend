@@ -70,11 +70,7 @@ route.get(
 //   '/api/v1/user/subject/:year/:studentNo',
 //   subjectController.fetchStudentSubjectByStudentNoAndYear
 // );
-route.get(
-  '/api/v1/year/subject/:year',
-  authentication.GrantAccess(),
-  subjectController.fetchSubjectByYear
-);
+route.get('/api/v1/year/subject/:year', subjectController.fetchSubjectByYear);
 route.get(
   '/api/v1/subject/:academicYear/:subjectId',
   subjectController.fetchStudentsBySubjectAndAcedemicYear

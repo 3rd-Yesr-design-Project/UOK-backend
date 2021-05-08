@@ -1,8 +1,8 @@
 /*
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:11
- * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-04-30 06:22:11
+ * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-05-08 20:57:30
  */
 
 const Profile = require('../models').profiles;

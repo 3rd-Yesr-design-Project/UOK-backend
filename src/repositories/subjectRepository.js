@@ -1,8 +1,8 @@
 /*
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:45
- * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-04-30 06:22:45
+ * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-05-08 11:18:57
  */
 
 import { Op } from 'sequelize';
@@ -23,15 +23,34 @@ class SubjectRepository {
   }
 
   async fetchSubjectByStudentIdAndYear(studentId, year) {
+    console.log(studentId, year);
+    // return Student.findOne({
+    //   // attributes: [],
+    //   include: [
+    //     {
+    //       model: Subject,
+    //       as: 'subjects',
+    //       where: {
+    //         year: year,
+    //       },
+    //     },
+    //   ],
+    //   where: {
+    //     id: studentId,
+    //   },
+    // });
+
     return Student.findOne({
-      attributes: [],
+      // attributes: [],
       include: [
         {
-          model: Subject,
-          as: 'subjects',
-          where: {
-            year: year,
-          },
+          model: Result,
+          include: [
+            {
+              model: Subject,
+              where: { year: year },
+            },
+          ],
         },
       ],
       where: {
@@ -69,6 +88,7 @@ class SubjectRepository {
   }
 
   fetchStudentsBySubjectAndAcedemicYear(subjectId, academicYear) {
+    console.log('bbbbbbbbbb', subjectId, academicYear);
     return Result.findAll({
       include: [{ model: Student }],
       where: {
@@ -76,6 +96,17 @@ class SubjectRepository {
         academic_year: academicYear,
       },
     });
+    // return Student.findAll({
+    //   include: [
+    //     {
+    //       model: Subject,
+    //       as: 'subjects',
+    //       through: {
+    //         where: { subject_id: subjectId, academic_year: academicYear },
+    //       },
+    //     },
+    //   ],
+    // });
   }
 }
 

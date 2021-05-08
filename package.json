@@ -20,7 +20,9 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.6.0",
-    "sequelize": "^6.3.5",
+    "pg": "^8.6.0",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0"
   },
   "devDependencies": {
