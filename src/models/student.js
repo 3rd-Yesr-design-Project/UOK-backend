@@ -12,10 +12,6 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      name: {
-        type: DataTypes.STRING(300),
-        allowNull: false,
-      },
       student_no: {
         type: DataTypes.STRING(100),
         allowNull: false,

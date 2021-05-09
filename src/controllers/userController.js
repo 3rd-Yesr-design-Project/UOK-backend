@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-07 22:54:33
+ * @Last Modified time: 2021-05-09 07:24:57
  */
 
 import userService from '../services/userService';
@@ -79,6 +79,24 @@ class UserConatroller {
       const userId = req.params.userId;
       await userService.resetPassword(userId, req.body);
       resHelper.updated(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async userSearch(req, res) {
+    try {
+      const users = await userService.userSearch(req.body);
+      resHelper.responseData(res, users);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async whoAmI(req, res) {
+    try {
+      const user = await userService.whoAmI(req.user);
+      resHelper.responseData(res, user);
     } catch (error) {
       console.log(error);
     }

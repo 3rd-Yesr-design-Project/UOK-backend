@@ -17,10 +17,6 @@ module.exports = {
           key: 'id',
         },
       },
-      name: {
-        type: Sequelize.STRING(250),
-        allowNull: false,
-      },
       lecturer_no: {
         type: Sequelize.STRING(100),
         allowNull: false,

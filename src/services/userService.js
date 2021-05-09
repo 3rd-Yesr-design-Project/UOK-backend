@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-07 22:51:26
+ * @Last Modified time: 2021-05-09 07:23:27
  */
 
 import userRepository from '../repositories/userRepository';
@@ -68,13 +68,14 @@ class UserService {
 
   async addUser(requestBody) {
     //remove after create the project
-    const { userType, password, email } = requestBody;
+    const { userType, password, email, name } = requestBody;
 
     const salt = await bcrypt.genSalt(10);
     const newPassword = await bcrypt.hash(password, salt);
 
     const body = {
       user_type: userType,
+      name: name,
       email: email,
       password: newPassword,
     };
@@ -109,6 +110,17 @@ class UserService {
     };
 
     return userRepository.updateUserByUserId(userId, body);
+  }
+
+  userSearch(requestBody) {
+    const { name } = requestBody;
+    console.log(name);
+    return userRepository.userSearch(name);
+  }
+
+  whoAmI(user) {
+    console.log(user);
+    return userRepository.fetchUserByEmail(user.email);
   }
 }
 

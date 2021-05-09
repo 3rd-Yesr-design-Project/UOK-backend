@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.ENUM('lecturer', 'demo', 'student'),
         allowNull: false,
       },
+      name: {
+        type: Sequelize.STRING(250),
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING(200),
         allowNull: false,
