@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:29
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 10:11:33
+ * @Last Modified time: 2021-05-09 20:50:40
  */
 
 import profileService from '../services/profileService';
@@ -19,7 +19,6 @@ class ProfileController {
   }
 
   async updateProfile(req, res) {
-    console.log('yyyyyyyyyyyyyyyyyyyyy', req.body);
     try {
       const profileId = req.params.profileId;
       await profileService.updateProfile(profileId, req.body);

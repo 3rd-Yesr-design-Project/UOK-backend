@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 09:25:09
+ * @Last Modified time: 2021-05-09 21:31:17
  */
 
 import userService from '../services/userService';
@@ -94,7 +94,6 @@ class UserConatroller {
   }
 
   async whoAmI(req, res) {
-    console.log('xxxxxxxxxxxxxxxxxx');
     try {
       const user = await userService.whoAmI(req.user);
       resHelper.responseData(res, user);

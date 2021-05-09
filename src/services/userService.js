@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 09:57:50
+ * @Last Modified time: 2021-05-09 21:31:40
  */
 
 import userRepository from '../repositories/userRepository';
@@ -120,7 +120,6 @@ class UserService {
 
   userSearch(requestBody) {
     const { name } = requestBody;
-    console.log(name);
     return userRepository.userSearch(name);
   }
 
