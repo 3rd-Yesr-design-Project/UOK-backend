@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 07:23:27
+ * @Last Modified time: 2021-05-09 09:57:50
  */
 
 import userRepository from '../repositories/userRepository';
@@ -16,12 +16,15 @@ import emailService from './emailService';
 class UserService {
   async socialLogin(requestBody) {
     const { email, password } = requestBody;
+    console.log(password);
 
     const user = await userRepository.fetchUserByEmail(email);
     if (!user) {
       throw new Error('Your email is incorrect');
     }
+    console.log(user);
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log(isMatch);
     if (!isMatch) {
       throw new Error('Your password is not Match');
     }
@@ -42,6 +45,7 @@ class UserService {
 
   async resultLogin(requestBody) {
     const { email, password } = requestBody;
+    console.log(password);
 
     const user = await userRepository.fetchUserByEmail(email);
     if (!user) {
@@ -84,10 +88,12 @@ class UserService {
   }
 
   async fetchUsers() {
-    const students = await studentRepository.fetchStudents();
-    const lecturers = await lecturerRepository.fetchLecturers();
-    const friend = [...students, ...lecturers];
-    return friend;
+    // const students = await studentRepository.fetchStudents();
+    // const lecturers = await lecturerRepository.fetchLecturers();
+
+    // const friend = [...students, ...lecturers];
+    // return friend;
+    return userRepository.fetchUsers();
   }
 
   async fogetPassword(requestBody) {
@@ -119,7 +125,6 @@ class UserService {
   }
 
   whoAmI(user) {
-    console.log(user);
     return userRepository.fetchUserByEmail(user.email);
   }
 }

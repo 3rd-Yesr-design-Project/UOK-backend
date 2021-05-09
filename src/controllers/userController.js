@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 07:24:57
+ * @Last Modified time: 2021-05-09 09:25:09
  */
 
 import userService from '../services/userService';
@@ -42,7 +42,7 @@ class UserConatroller {
       const user = await userService.fetchUserById(req.params.userId);
       resHelper.responseData(res, user);
     } catch (error) {
-      resHelper.serverFailing(res, erro.message);
+      resHelper.serverFailing(res, error.message);
     }
   }
 
@@ -94,6 +94,7 @@ class UserConatroller {
   }
 
   async whoAmI(req, res) {
+    console.log('xxxxxxxxxxxxxxxxxx');
     try {
       const user = await userService.whoAmI(req.user);
       resHelper.responseData(res, user);

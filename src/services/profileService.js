@@ -2,10 +2,11 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:38
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-07 16:12:58
+ * @Last Modified time: 2021-05-09 10:19:47
  */
 
 import profileRepository from '../repositories/profileRepository';
+import userRepository from '../repositories/userRepository';
 
 class ProfileService {
   createProfile(user, requestBody) {
@@ -69,7 +70,7 @@ class ProfileService {
   }
 
   fetchProfileByUserId(userId) {
-    return profileRepository.fetchProfileByUserId(userId);
+    return userRepository.fetchProfileByUserId(userId);
   }
 }
 

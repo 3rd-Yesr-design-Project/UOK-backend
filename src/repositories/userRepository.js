@@ -2,11 +2,12 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:54
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 07:25:53
+ * @Last Modified time: 2021-05-09 10:36:23
  */
 
 const Sequelize = require('sequelize');
 const User = require('../models').users;
+const Profile = require('../models').profiles;
 const { Op } = Sequelize;
 
 class UserRepository {
@@ -24,7 +25,6 @@ class UserRepository {
 
   fetchUserByEmail(email) {
     return User.findOne({
-      attributes: ['id', 'email', 'user_type', 'name'],
       where: {
         email: email,
       },
@@ -40,6 +40,22 @@ class UserRepository {
         },
       },
       limit: 10,
+    });
+  }
+
+  fetchUsers() {
+    return User.findAll({
+      attributes: ['id', 'name'],
+    });
+  }
+
+  fetchProfileByUserId(userId) {
+    return User.findOne({
+      attributes: ['id', 'name', 'email'],
+      include: [{ model: Profile }],
+      where: {
+        id: userId,
+      },
     });
   }
 }

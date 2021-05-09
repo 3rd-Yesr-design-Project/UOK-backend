@@ -20,7 +20,7 @@ route.post('/api/v1/user/forgetpassword', userController.fogetPassword);
 route.post('/api/v1/user/resetpassword', userController.resetPassword);
 route.post('/api/v1/user/search', userController.userSearch);
 route.get(
-  '/api/user/whoAmI',
+  '/api/v1/whoAmI',
   authentication.GrantAccess(),
   userController.whoAmI
 );

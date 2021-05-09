@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:29
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-08 20:58:03
+ * @Last Modified time: 2021-05-09 10:11:33
  */
 
 import profileService from '../services/profileService';
@@ -31,11 +31,11 @@ class ProfileController {
   }
 
   async fetchProfileByUserId(req, res) {
-    console.log(req.params.userId);
     try {
       const profile = await profileService.fetchProfileByUserId(
         req.params.userId
       );
+      console.log('');
       resHelper.responseData(res, profile);
     } catch (error) {
       resHelper.serverFailing(res, error.message);
