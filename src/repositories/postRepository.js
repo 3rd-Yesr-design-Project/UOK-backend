@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:03
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 23:32:13
+ * @Last Modified time: 2021-05-10 23:35:39
  */
 
 const Post = require('../models').posts;
@@ -45,6 +45,7 @@ class PostRepository {
 
   fetchPostsByUserId(userId) {
     return Post.findAll({
+      include: [{ model: User, attributes: ['name'] }],
       where: {
         user_id: userId,
       },
