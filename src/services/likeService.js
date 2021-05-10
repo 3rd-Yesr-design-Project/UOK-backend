@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:19
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 23:11:56
+ * @Last Modified time: 2021-05-10 23:40:38
  */
 
 import likeRepository from '../repositories/likeRepository';
@@ -22,7 +22,7 @@ class LikeService {
       return likeRepository.createLike(body);
     }
 
-    return likeRepository.deleteLike(userId, postId);
+    return likeRepository.deleteLike(user.userId, postId);
   }
 }
 
