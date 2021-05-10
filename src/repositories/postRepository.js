@@ -34,7 +34,7 @@ class PostRepository {
             {
               model: User,
               attributes: ['name'],
-              include: [{ model: Profile, attributes: ['proifle_url'] }],
+              include: [{ model: Profile, attributes: ['profile_url'] }],
             },
           ],
         },
