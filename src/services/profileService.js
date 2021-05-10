@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:38
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 10:19:47
+ * @Last Modified time: 2021-05-10 08:42:43
  */
 
 import profileRepository from '../repositories/profileRepository';
@@ -35,7 +35,7 @@ class ProfileService {
     return profileRepository.createProfile(body);
   }
 
-  updateProfile(profileId, requestBody) {
+  updateProfile(userId, requestBody) {
     const {
       profileUrl,
       mobile,
@@ -66,7 +66,7 @@ class ProfileService {
       current_city: currentCity,
     };
 
-    return profileRepository.updateProfile(profileId, body);
+    return profileRepository.updateProfile(userId, body);
   }
 
   fetchProfileByUserId(userId) {

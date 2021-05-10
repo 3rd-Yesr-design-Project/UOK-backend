@@ -29,7 +29,7 @@ module.exports = function (sequelize, DataTypes) {
         allowNull: true,
       },
       gender: {
-        type: DataTypes.ENUM('male', 'femail'),
+        type: DataTypes.ENUM('male', 'female'),
         allowNull: false,
       },
       language: {

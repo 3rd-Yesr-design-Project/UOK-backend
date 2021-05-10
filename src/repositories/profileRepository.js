@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:11
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 10:11:50
+ * @Last Modified time: 2021-05-10 08:43:25
  */
 
 const Profile = require('../models').profiles;
@@ -13,10 +13,10 @@ class ProfileRepository {
     return Profile.create(body);
   }
 
-  updateProfile(profileId, body) {
+  updateProfile(userId, body) {
     return Profile.update(body, {
       where: {
-        id: profileId,
+        user_id: userId,
       },
     });
   }

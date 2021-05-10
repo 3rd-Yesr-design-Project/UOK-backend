@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:54
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 21:36:28
+ * @Last Modified time: 2021-05-09 21:54:46
  */
 
 const Sequelize = require('sequelize');
@@ -47,6 +47,7 @@ class UserRepository {
   fetchUsers() {
     return User.findAll({
       attributes: ['id', 'name'],
+      include: [{ model: Profile, attributes: ['profile_url'] }],
     });
   }
 

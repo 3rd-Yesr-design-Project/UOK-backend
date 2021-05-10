@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:03
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 18:10:17
+ * @Last Modified time: 2021-05-10 08:49:28
  */
 
 const Post = require('../models').posts;
@@ -26,6 +26,14 @@ class PostRepository {
   fetchPosts() {
     return Post.findAll({
       include: [{ model: User }, { model: Comment }, { model: Like }],
+    });
+  }
+
+  fetchPostsByUserId(userId) {
+    return Post.findAll({
+      where: {
+        user_id: userId,
+      },
     });
   }
 }

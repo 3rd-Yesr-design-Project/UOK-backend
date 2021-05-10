@@ -31,7 +31,7 @@ route.get(
 //   authentication.GrantAccess(),
 //   profileController.createProfile
 // );
-route.put('/api/v1/profile/:profileId', profileController.updateProfile);
+route.put('/api/v1/profile/:userId', profileController.updateProfile);
 route.get(
   '/api/v1/profile/:userId',
   authentication.GrantAccess(),
@@ -44,8 +44,9 @@ route.post(
   authentication.GrantAccess(),
   postController.createPost
 );
+route.get('/api/v1/posts/:userId', postController.fetchPostsByUserId);
 route.delete('/api/v1/post/:postId', postController.deletePost);
-route.get('/api/v1/posts', postController.fetchPosts);
+route.get('/api/v1/all-posts', postController.fetchPosts);
 
 //comment
 route.post(
