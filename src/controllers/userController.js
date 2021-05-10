@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 21:31:17
+ * @Last Modified time: 2021-05-10 09:35:04
  */
 
 import userService from '../services/userService';
@@ -77,6 +77,7 @@ class UserConatroller {
   async resetPassword(req, res) {
     try {
       const userId = req.params.userId;
+      console.log('yyyyyyyyyyy', userId);
       await userService.resetPassword(userId, req.body);
       resHelper.updated(res);
     } catch (error) {

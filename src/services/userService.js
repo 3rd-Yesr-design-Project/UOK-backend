@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-09 21:31:40
+ * @Last Modified time: 2021-05-10 10:02:25
  */
 
 import userRepository from '../repositories/userRepository';
@@ -108,11 +108,12 @@ class UserService {
     emailService.sendMail(email, subject, template);
   }
 
-  resetPassword(userId, requestBody) {
-    const { passWord } = requestBody;
-
+  async resetPassword(userId, requestBody) {
+    const { password } = requestBody;
+    const salt = await bcrypt.genSalt(10);
+    const newPassword = await bcrypt.hash(password, salt);
     const body = {
-      password: passWord,
+      password: newPassword,
     };
 
     return userRepository.updateUserByUserId(userId, body);
