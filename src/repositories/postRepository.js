@@ -2,14 +2,14 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:03
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 23:27:07
+ * @Last Modified time: 2021-05-10 23:32:13
  */
 
 const Post = require('../models').posts;
 const Comment = require('../models').comments;
 const Like = require('../models').likes;
 const User = require('../models').users;
-const Profile = require('../models').profile;
+const Profile = require('../models').profiles;
 
 class PostRepository {
   createPost(body) {
