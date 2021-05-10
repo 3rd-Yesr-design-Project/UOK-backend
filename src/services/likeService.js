@@ -1,8 +1,8 @@
 /*
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:19
- * @Last Modified by:   Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-04-30 06:20:19
+ * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
+ * @Last Modified time: 2021-05-10 23:11:56
  */
 
 import likeRepository from '../repositories/likeRepository';
@@ -10,7 +10,7 @@ import likeRepository from '../repositories/likeRepository';
 class LikeService {
   async updateLike(user, postId, requestBody) {
     const isLiked = await likeRepository.fetchLikeByUserIdAndPostId(
-      userId,
+      user.userId,
       postId
     );
 

@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:03
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 22:59:10
+ * @Last Modified time: 2021-05-10 23:17:57
  */
 
 const Post = require('../models').posts;
@@ -29,7 +29,13 @@ class PostRepository {
         { model: User },
         {
           model: Comment,
-          include: [{ model: User }],
+          include: [
+            {
+              model: User,
+              attributes: ['name'],
+              include: [{ model: Profile, attributes: ['proifle_url'] }],
+            },
+          ],
         },
         { model: Like },
       ],
