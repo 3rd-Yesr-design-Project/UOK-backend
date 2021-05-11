@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 10:02:25
+ * @Last Modified time: 2021-05-11 20:37:58
  */
 
 import userRepository from '../repositories/userRepository';
@@ -45,7 +45,7 @@ class UserService {
 
   async resultLogin(requestBody) {
     const { email, password } = requestBody;
-    console.log(password);
+    console.log(email);
 
     const user = await userRepository.fetchUserByEmail(email);
     if (!user) {

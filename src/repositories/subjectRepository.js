@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:45
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-08 11:18:57
+ * @Last Modified time: 2021-05-11 09:35:09
  */
 
 import { Op } from 'sequelize';
@@ -107,6 +107,10 @@ class SubjectRepository {
     //     },
     //   ],
     // });
+  }
+
+  updateResultById(id, body) {
+    return Result.update(body, { where: { id: id } });
   }
 }
 

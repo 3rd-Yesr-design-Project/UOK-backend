@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:49
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-08 09:44:23
+ * @Last Modified time: 2021-05-11 10:05:08
  */
 
 import studentRepository from '../repositories/studentRepository';
@@ -63,6 +63,16 @@ class SubjectService {
       subjectId,
       academicYear
     );
+  }
+
+  async updateResult(requestBody) {
+    const { results } = requestBody;
+    for (const result of results) {
+      const body = {
+        result: result.result,
+      };
+      await subjectRepository.updateResultById(result.id, body);
+    }
   }
 }
 

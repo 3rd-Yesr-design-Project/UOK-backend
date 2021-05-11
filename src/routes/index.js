@@ -82,5 +82,5 @@ route.get(
   '/api/v1/subject/:academicYear/:subjectId',
   subjectController.fetchStudentsBySubjectAndAcedemicYear
 );
-
+route.put('/api/v1/result', subjectController.updateResult);
 export default route;

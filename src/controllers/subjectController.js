@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:41
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-08 09:45:37
+ * @Last Modified time: 2021-05-11 10:02:09
  */
 
 import subjectService from '../services/subjectService';
@@ -39,7 +39,6 @@ class SubjectController {
         req.user,
         year
       );
-      console.log(subjects);
       resHelper.responseData(res, subjects);
     } catch (error) {
       console.log(error);
@@ -94,11 +93,22 @@ class SubjectController {
     try {
       const academicYear = req.params.academicYear;
       const subjectId = req.params.subjectId;
-      const students = await subjectService.fetchStudentsBySubjectAndAcedemicYear(
-        subjectId,
-        academicYear
-      );
+      const students =
+        await subjectService.fetchStudentsBySubjectAndAcedemicYear(
+          subjectId,
+          academicYear
+        );
       resHelper.responseData(res, students);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async updateResult(req, res) {
+    console.log('xxxxxxxxxxx');
+    try {
+      await subjectService.updateResult(req.body);
+      resHelper.updated(res);
     } catch (error) {
       console.log(error);
     }
