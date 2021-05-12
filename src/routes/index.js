@@ -14,7 +14,7 @@ route.post('/api/v1/user/temp', userController.addUserPassword); //remove after 
 route.post('/api/v1/social/login', userController.socialLogin);
 route.post('/api/v1/result/login', userController.resultLogin);
 // route.put('/api/v1/user/profile/:userId',userController.createProfile);
-route.get('/api/v1/user/:id', userController.fetchUserById);
+// route.get('/api/v1/user/:id', userController.fetchUserById);
 route.get('/api/v1/all-user', userController.fetchUsers);
 route.post('/api/v1/user/forgetpassword', userController.fogetPassword);
 route.post('/api/v1/user/resetpassword/:userId', userController.resetPassword);

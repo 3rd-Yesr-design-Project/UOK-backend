@@ -28,44 +28,45 @@ describe('Testing user endpoints:', () => {
       });
   });
 
-  //   it('It should create a Budget Category', (done) => {
-  //     let r = Math.random().toString(36).substring(7);
-  //     const body = {
-  //       customer_id: 1,
-  //       project_id: 1,
-  //       category_name: r,
-  //     };
-  //     chai
-  //       .request(app)
-  //       .post('/api/budget/category/1')
-  //       .set({ Authorization: token })
-  //       .send(body)
-  //       .end((err, res) => {
-  //         console.log(err);
-  //         if (err) done(err);
-  //         categoryId = res.body.data.id;
-  //         expect(res).to.have.status(201);
-  //         expect(res.body.success).to.equals(true);
-  //         expect(res.body.message).to.equals('Created');
-  //         expect(res.body.data).to.be.an('object');
-  //         done();
-  //       });
-  //   });
+  it('It should get all users', (done) => {
+    let r = Math.random().toString(36).substring(7);
+    const body = {
+      customer_id: 1,
+      project_id: 1,
+      category_name: r,
+    };
+    chai
+      .request('http://localhost:4000')
+      .get('/api/v1/all-user')
+      .end((err, res) => {
+        console.log(err);
+        if (err) done(err);
+        // console.log(res);
+        // categoryId = res.body.data.id;
+        expect(res).to.have.status(200);
+        expect(res.body.success).to.equals(true);
+        // expect(res.body.message).to.equals('Created');
+        expect(res.body.data).to.be.an('array');
+        done();
+      });
+  });
 
-  //   it('should get a all Budget category by the projectId', (done) => {
-  //     const projectId = 1;
-  //     chai
-  //       .request(app)
-  //       .get(`/api/budget/category/${projectId}`)
-  //       .set({ Authorization: token })
-  //       .end((err, res) => {
-  //         expect(res).to.have.status(200);
-  //         expect(res.body.success).to.equals(true);
-  //         expect(res.body.message).to.equals(null);
-  //         expect(res.body.data).to.be.an('array');
-  //         done();
-  //       });
-  //   });
+  it('should forget Password', (done) => {
+    const body = {
+      email: 'anjanashakthi95@gmail.com',
+    };
+    chai
+      .request('http://localhost:4000')
+      .post(`/api/v1/user/forgetpassword`)
+      // .set({ Authorization: token })
+      .send(body)
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res.body.success).to.equals(true);
+        expect(res.body.message).to.equals('Updated');
+        done();
+      });
+  });
 
   //   it('should updagte dwrCategory', (done) => {
   //     const projectId = 1;

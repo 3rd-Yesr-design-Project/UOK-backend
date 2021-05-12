@@ -30,7 +30,7 @@ const smtpTransport = nodemailer.createTransport({
 });
 
 class EmailService {
-  sendMail(email, subject, template) {
+  async sendMail(email, subject, template) {
     const mailOptions = {
       from: 'shakthi.10jaya@gmail.com',
       to: email,
@@ -39,9 +39,22 @@ class EmailService {
       html: template,
     };
 
-    smtpTransport.sendMail(mailOptions, (error, response) => {
-      error ? console.log(error) : console.log(response);
-      smtpTransport.close();
+    // smtpTransport.sendMail(mailOptions, (error, response) => {
+    //   error ? console.log(error) : console.log(response);
+    //   smtpTransport.close();
+    // });
+
+    return await new Promise((resolve, reject) => {
+      return smtpTransport.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('Email Not Sent', error);
+          return reject(error);
+        } else {
+          smtpTransport.close();
+          console.log('Email sent: ' + info.response);
+          return resolve(info);
+        }
+      });
     });
   }
 }

@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 09:35:04
+ * @Last Modified time: 2021-05-12 12:18:34
  */
 
 import userService from '../services/userService';
@@ -37,14 +37,15 @@ class UserConatroller {
     }
   }
 
-  async fetchUserById(req, res) {
-    try {
-      const user = await userService.fetchUserById(req.params.userId);
-      resHelper.responseData(res, user);
-    } catch (error) {
-      resHelper.serverFailing(res, error.message);
-    }
-  }
+  // async fetchUserById(req, res) {
+  //   try {
+  //     const user = await userService.fetchUserById(req.params.userId);
+  //     console.log('xxxxxxxxxxxxxxx'.user);
+  //     resHelper.responseData(res, user);
+  //   } catch (error) {
+  //     resHelper.serverFailing(res, error.message);
+  //   }
+  // }
 
   async addUserPassword(req, res) {
     //remove after create the project

@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:49
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-11 10:05:08
+ * @Last Modified time: 2021-05-12 19:05:40
  */
 
 import studentRepository from '../repositories/studentRepository';
@@ -66,8 +66,7 @@ class SubjectService {
   }
 
   async updateResult(requestBody) {
-    const { results } = requestBody;
-    for (const result of results) {
+    for (const result of requestBody) {
       const body = {
         result: result.result,
       };

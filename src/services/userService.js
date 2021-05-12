@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-11 20:37:58
+ * @Last Modified time: 2021-05-12 13:00:22
  */
 
 import userRepository from '../repositories/userRepository';
@@ -106,6 +106,7 @@ class UserService {
     const subject = 'Reset Your Password';
     const template = emailTemplateHelper.forgetPasswordTemplate(link);
     emailService.sendMail(email, subject, template);
+    return;
   }
 
   async resetPassword(userId, requestBody) {
