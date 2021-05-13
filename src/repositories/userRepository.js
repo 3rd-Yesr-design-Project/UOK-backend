@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:54
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 09:58:00
+ * @Last Modified time: 2021-05-12 22:18:47
  */
 
 const Sequelize = require('sequelize');
@@ -25,6 +25,7 @@ class UserRepository {
 
   fetchUserByEmail(email) {
     return User.findOne({
+      include: [{ model: Profile }],
       where: {
         email: email,
       },
