@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-13 21:03:10
+ * @Last Modified time: 2021-05-13 22:54:15
  */
 
 import userRepository from '../repositories/userRepository';
@@ -16,8 +16,6 @@ import emailService from './emailService';
 class UserService {
   async socialLogin(requestBody) {
     const { email, password } = requestBody;
-    console.log(password);
-
     const user = await userRepository.fetchUserByEmail(email);
     if (!user) {
       throw new Error('Your email is incorrect');
@@ -37,7 +35,7 @@ class UserService {
     const loginUser = {
       id: user.id,
       name: user.name,
-      usertype: user.user_type,
+      user_type: user.user_type,
       studentNo: user.student_no,
     };
     return { loginUser, token };
@@ -64,7 +62,7 @@ class UserService {
     const loginUser = {
       id: user.id,
       name: user.name,
-      usertype: user.user_type,
+      user_type: user.user_type,
       profile: user.profile,
       studnet: user.student ? user.student : null,
     };
