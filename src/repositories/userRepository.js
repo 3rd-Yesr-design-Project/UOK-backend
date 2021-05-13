@@ -2,12 +2,13 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:54
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-13 19:25:42
+ * @Last Modified time: 2021-05-13 20:27:04
  */
 
 const Sequelize = require('sequelize');
 const User = require('../models').users;
 const Profile = require('../models').profiles;
+const Student = require('../models').students;
 const { Op } = Sequelize;
 
 class UserRepository {
