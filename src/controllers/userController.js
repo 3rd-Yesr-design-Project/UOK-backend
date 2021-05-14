@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:50
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-14 22:03:29
+ * @Last Modified time: 2021-05-14 22:32:27
  */
 
 import userService from '../services/userService';
@@ -14,8 +14,10 @@ class UserConatroller {
       const user = await userService.socialLogin(req.body);
       resHelper.responseData(res, user);
     } catch (error) {
+      if (error instanceof Error) {
+        return resHelper.failedCustom(res, error.message);
+      }
       console.log(error);
-      resHelper.failedCustom(res, error);
     }
   }
 
@@ -24,8 +26,10 @@ class UserConatroller {
       const user = await userService.resultLogin(req.body);
       resHelper.responseData(res, user);
     } catch (error) {
+      if (error instanceof Error) {
+        return resHelper.failedCustom(res, error.message);
+      }
       console.log(error);
-      resHelper.failedCustom(res, error);
     }
   }
 
