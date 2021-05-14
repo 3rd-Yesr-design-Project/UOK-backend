@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-13 22:54:15
+ * @Last Modified time: 2021-05-13 23:23:03
  */
 
 import userRepository from '../repositories/userRepository';
@@ -64,7 +64,7 @@ class UserService {
       name: user.name,
       user_type: user.user_type,
       profile: user.profile,
-      studnet: user.student ? user.student : null,
+      student: user.student ? user.student : null,
     };
     return { loginUser, token };
   }
