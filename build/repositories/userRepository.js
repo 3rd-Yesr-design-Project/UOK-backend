@@ -14,12 +14,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:54
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-13 19:25:42
+ * @Last Modified time: 2021-05-13 20:27:04
  */
 
 var Sequelize = require('sequelize');
 var User = require('../models').users;
 var Profile = require('../models').profiles;
+var Student = require('../models').students;
 var Op = Sequelize.Op;
 
 var UserRepository = function () {

@@ -8,7 +8,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * @Author: Anjana (anjanashakthi95@gmail.com)
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * @Date: 2021-04-30 06:20:59
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @Last Modified time: 2021-05-12 13:00:22
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      * @Last Modified time: 2021-05-13 23:23:03
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       */
 
 var _userRepository = require('../repositories/userRepository');
@@ -54,8 +54,6 @@ var UserService = function () {
       var email = requestBody.email,
           password = requestBody.password;
 
-      console.log(password);
-
       var user = await _userRepository2.default.fetchUserByEmail(email);
       if (!user) {
         throw new Error('Your email is incorrect');
@@ -71,7 +69,7 @@ var UserService = function () {
       var loginUser = {
         id: user.id,
         name: user.name,
-        usertype: user.user_type,
+        user_type: user.user_type,
         studentNo: user.student_no
       };
       return { loginUser: loginUser, token: token };
@@ -97,8 +95,9 @@ var UserService = function () {
       var loginUser = {
         id: user.id,
         name: user.name,
-        usertype: user.user_type,
-        studentNo: user.student_no
+        user_type: user.user_type,
+        profile: user.profile,
+        student: user.student ? user.student : null
       };
       return { loginUser: loginUser, token: token };
     }

@@ -12,7 +12,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:03
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-12 22:31:34
+ * @Last Modified time: 2021-05-13 22:19:32
  */
 
 var Post = require('../models').posts;
@@ -61,7 +61,7 @@ var PostRepository = function () {
     key: 'fetchPostsByUserId',
     value: function fetchPostsByUserId(userId) {
       return Post.findAll({
-        include: [{ model: User, attributes: ['name'] }],
+        include: [{ model: User, attributes: ['name'] }, { model: Comment }, { model: Like }],
         where: {
           user_id: userId
         }
