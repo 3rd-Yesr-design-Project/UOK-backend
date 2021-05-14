@@ -6,6 +6,7 @@
   "scripts": {
     "test": "mocha --require @babel/register  ./src/tests/*.js --timeout 20000 --exit",
     "start": "nodemon --exec babel-node ./src/index.js",
+    "prod": "babel-node ./src/index.js",
     "build": "babel src -d build"
   },
   "keywords": [],
