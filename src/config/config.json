@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "postgres",
-    "password": "*952921215#as",
+    "password": "anjana",
     "database": "postgres",
     "host": "db.iugbskyncjkchyhodbox.supabase.co",
     "dialect": "postgres",
