@@ -1,10 +1,11 @@
 {
   "development": {
     "username": "postgres",
-    "password": "anjana",
-    "database": "social_media",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "password": "*952921215#as",
+    "database": "postgres",
+    "host": "db.iugbskyncjkchyhodbox.supabase.co",
+    "dialect": "postgres",
+    "port": "5432"
   },
   "test": {
     "username": "root",
