@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-13 23:23:03
+ * @Last Modified time: 2021-05-14 22:02:52
  */
 
 import userRepository from '../repositories/userRepository';
