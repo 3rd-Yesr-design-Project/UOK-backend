@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:29
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-15 13:29:28
+ * @Last Modified time: 2021-05-15 15:06:04
  */
 
 import profileService from '../services/profileService';
@@ -21,9 +21,8 @@ class ProfileController {
   async updateProfile(req, res) {
     try {
       const userId = req.params.userId;
-      const re = await profileService.updateProfile(userId, req.body);
-      console.log('xxxxxxxxxxxxxxxxxx', re);
-      resHelper.created(res);
+      const profile = await profileService.updateProfile(userId, req.body);
+      resHelper.updated(res, profile);
     } catch (error) {
       console.log(error);
       resHelper.serverFailing(res, error.message);

@@ -7,11 +7,11 @@ class ResHelper {
     });
   }
 
-  updated(res) {
+  updated(res, data) {
     res.status(200).send({
       success: true,
       message: 'Updated',
-      data: null,
+      data: data,
     });
   }
 
