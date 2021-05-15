@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:11
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 08:43:25
+ * @Last Modified time: 2021-05-15 13:26:21
  */
 
 const Profile = require('../models').profiles;
@@ -18,6 +18,7 @@ class ProfileRepository {
       where: {
         user_id: userId,
       },
+      returning: true,
     });
   }
 

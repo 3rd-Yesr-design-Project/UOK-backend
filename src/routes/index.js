@@ -26,11 +26,11 @@ route.get(
 );
 
 //profile
-// route.post(
-//   '/api/v1/profile',
-//   authentication.GrantAccess(),
-//   profileController.createProfile
-// );
+route.post(
+  '/api/v1/profile',
+  authentication.GrantAccess(),
+  profileController.createProfile
+);
 route.put('/api/v1/profile/:userId', profileController.updateProfile);
 route.get(
   '/api/v1/profile/:userId',
