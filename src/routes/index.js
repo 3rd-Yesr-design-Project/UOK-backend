@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import commentController from '../controllers/commentController';
+import friendController from '../controllers/friendController';
 import likeController from '../controllers/likeController';
 import postController from '../controllers/postController';
 import profileController from '../controllers/profileController';
@@ -83,4 +84,16 @@ route.get(
   subjectController.fetchStudentsBySubjectAndAcedemicYear
 );
 route.put('/api/v1/result', subjectController.updateResult);
+
+//friedn
+route.post(
+  '/api/v1/friend',
+  authentication.GrantAccess(),
+  friendController.addFriend
+);
+route.get(
+  '/api/v1/friend/:friendId',
+  authentication.GrantAccess(),
+  friendController.fetchFriend
+);
 export default route;

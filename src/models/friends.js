@@ -32,7 +32,7 @@ module.exports = function (sequelize, DataTypes) {
     {
       freezeTableName: true,
       createdAt: 'created_at',
-      updatedAT: 'updated_at',
+      updatedAt: 'updated_at',
     }
   );
 
