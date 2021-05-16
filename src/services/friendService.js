@@ -14,6 +14,10 @@ class FriendService {
   fetchFriend(user, friendId) {
     return friendRepository.fetchFriend(user.userId, friendId);
   }
+
+  fetchFriends(user) {
+    return friendRepository.fetchFriends(user.userId);
+  }
 }
 
 const friendService = new FriendService();

@@ -21,6 +21,15 @@ class FriendController {
       console.log(error);
     }
   }
+
+  async fetchFriends(req, res) {
+    try {
+      const friends = await friendService.fetchFriends(req.user);
+      resHelper.responseData(res, friends);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 const friendController = new FriendController();

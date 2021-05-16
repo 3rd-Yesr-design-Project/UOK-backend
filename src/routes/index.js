@@ -96,4 +96,9 @@ route.get(
   authentication.GrantAccess(),
   friendController.fetchFriend
 );
+route.get(
+  '/api/v1/all-friends',
+  authentication.GrantAccess(),
+  friendController.fetchFriends
+);
 export default route;
