@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:54
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-13 20:27:04
+ * @Last Modified time: 2021-05-17 18:34:39
  */
 
 const Sequelize = require('sequelize');
