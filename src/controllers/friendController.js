@@ -30,6 +30,25 @@ class FriendController {
       console.log(error);
     }
   }
+
+  async changeRequestStatus(req, res) {
+    try {
+      const requestId = req.params.requestId;
+      await friendService.changeRequestStatus(requestId, req.body);
+      resHelper.updated(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async deleteFriendRequest(req, res) {
+    try {
+      await friendService.deleteFriendRequest(req.params.requestId);
+      resHelper.deleted(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 const friendController = new FriendController();

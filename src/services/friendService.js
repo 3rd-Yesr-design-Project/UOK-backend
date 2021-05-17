@@ -18,6 +18,18 @@ class FriendService {
   fetchFriends(user) {
     return friendRepository.fetchFriends(user.userId);
   }
+
+  changeRequestStatus(requestId, requestBody) {
+    const { status } = requestBody;
+    const body = {
+      status: status,
+    };
+    return friendRepository.changeRequestStatus(requestId, body);
+  }
+
+  deleteFriendRequest(requestId) {
+    return friendRepository.deleteFriendRequest(requestId);
+  }
 }
 
 const friendService = new FriendService();

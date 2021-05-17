@@ -16,6 +16,14 @@ class FriendRepository {
       where: { user_id: userId },
     });
   }
+
+  changeRequestStatus(requestId, body) {
+    return Friend.update(body, { where: { id: requestId } });
+  }
+
+  deleteFriendRequest(requestId) {
+    return Friend.destroy({ where: { id: requestId } });
+  }
 }
 
 const friendRepository = new FriendRepository();
