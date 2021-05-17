@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
 import commentController from '../controllers/commentController';
+import friendController from '../controllers/friendController';
 import likeController from '../controllers/likeController';
 import postController from '../controllers/postController';
 import profileController from '../controllers/profileController';

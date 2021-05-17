@@ -47,6 +47,8 @@ module.exports = function (sequelize, DataTypes) {
     user.hasOne(models.profiles, { foreignKey: 'user_id' });
     user.hasOne(models.students, { foreignKey: 'user_id' });
     user.hasOne(models.lecturers, { foreignKey: 'user_id' });
+    user.hasOne(models.friends, { foreignKey: 'user_id' });
+    user.hasOne(models.friends, { foreignKey: 'friend_id' });
   };
 
   return user;

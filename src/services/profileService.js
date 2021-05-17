@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:38
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-15 14:35:32
+ * @Last Modified time: 2021-05-16 16:56:20
  */
 
 import profileRepository from '../repositories/profileRepository';
@@ -79,8 +79,13 @@ class ProfileService {
     return profile[1][0].get();
   }
 
-  fetchProfileByUserId(userId) {
-    return userRepository.fetchProfileByUserId(userId);
+  async fetchProfileByUserId(user, profileUserId) {
+    const a = await userRepository.fetchProfileByUserId(
+      user.userId,
+      profileUserId
+    );
+    console.log('hhhhhhhhhhhhhhhhhh', a);
+    return a;
   }
 }
 

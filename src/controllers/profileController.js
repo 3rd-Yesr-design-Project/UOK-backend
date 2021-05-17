@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:29
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-17 17:33:02
+ * @Last Modified time: 2021-05-17 22:10:53
  */
 
 import profileService from '../services/profileService';
@@ -32,6 +32,7 @@ class ProfileController {
   async fetchProfileByUserId(req, res) {
     try {
       const profile = await profileService.fetchProfileByUserId(
+        req.user,
         req.params.userId
       );
       resHelper.responseData(res, profile);
