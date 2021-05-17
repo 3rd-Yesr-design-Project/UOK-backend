@@ -49,6 +49,15 @@ class FriendController {
       console.log(error);
     }
   }
+
+  async getFriendRequest(req, res) {
+    try {
+      const data = await friendService.getFriendRequest(req.user);
+      resHelper.responseData(res, data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 const friendController = new FriendController();

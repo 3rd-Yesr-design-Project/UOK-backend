@@ -30,6 +30,10 @@ class FriendService {
   deleteFriendRequest(requestId) {
     return friendRepository.deleteFriendRequest(requestId);
   }
+
+  getFriendRequest(user) {
+    return friendRepository.getFriendRequest(user.userId);
+  }
 }
 
 const friendService = new FriendService();

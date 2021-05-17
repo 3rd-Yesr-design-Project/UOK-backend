@@ -24,6 +24,15 @@ class FriendRepository {
   deleteFriendRequest(requestId) {
     return Friend.destroy({ where: { id: requestId } });
   }
+
+  getFriendRequest(userId) {
+    return Friend.findAll({
+      where: {
+        friend_id: userId,
+        status: 'pending',
+      },
+    });
+  }
 }
 
 const friendRepository = new FriendRepository();

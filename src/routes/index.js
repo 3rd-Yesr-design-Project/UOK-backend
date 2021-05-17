@@ -101,6 +101,19 @@ route.get(
   authentication.GrantAccess(),
   friendController.fetchFriends
 );
-route.put('/api/v1/friend/:requestId', friendController.changeRequestStatus);
-route.delete('/api/v1/friend/:requestId', friendController.deleteFriendRequest);
+route.put(
+  '/api/v1/friend/:requestId',
+  authentication.GrantAccess(),
+  friendController.changeRequestStatus
+);
+route.delete(
+  '/api/v1/friend/:requestId',
+  authentication.GrantAccess(),
+  friendController.deleteFriendRequest
+);
+route.get(
+  '/api/v1/friend/pending',
+  authentication.GrantAccess(),
+  friendController.getFriendRequest
+);
 export default route;
