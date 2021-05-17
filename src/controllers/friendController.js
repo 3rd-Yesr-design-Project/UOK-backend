@@ -5,8 +5,8 @@ import resHelper from '../utils/Helpers/resHelper';
 class FriendController {
   async addFriend(req, res) {
     try {
-      await friendService.addFriend(req.user, req.body);
-      resHelper.created(res);
+      const friend = await friendService.addFriend(req.user, req.body);
+      resHelper.created(res, friend);
     } catch (error) {
       console.log(error);
     }
