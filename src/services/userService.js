@@ -2,14 +2,12 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:59
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-14 22:02:52
+ * @Last Modified time: 2021-05-18 18:24:41
  */
 
 import userRepository from '../repositories/userRepository';
 import bcrypt from 'bcrypt';
 import jwtHelper from '../utils/Helpers/jwtHelper';
-import studentRepository from '../repositories/studentRepository';
-import lecturerRepository from '../repositories/lecturerRepository';
 import emailTemplateHelper from '../utils/Helpers/emailTemplateHelper';
 import emailService from './emailService';
 
@@ -20,9 +18,7 @@ class UserService {
     if (!user) {
       throw new Error('Your email is incorrect');
     }
-    console.log(user);
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch);
     if (!isMatch) {
       throw new Error('Your password is not Match');
     }
@@ -43,7 +39,6 @@ class UserService {
 
   async resultLogin(requestBody) {
     const { email, password } = requestBody;
-    console.log(email);
 
     const user = await userRepository.fetchUserByEmail(email);
     if (!user) {
@@ -87,11 +82,6 @@ class UserService {
   }
 
   async fetchUsers() {
-    // const students = await studentRepository.fetchStudents();
-    // const lecturers = await lecturerRepository.fetchLecturers();
-
-    // const friend = [...students, ...lecturers];
-    // return friend;
     return userRepository.fetchUsers();
   }
 

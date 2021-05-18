@@ -39,11 +39,6 @@ class EmailService {
       html: template,
     };
 
-    // smtpTransport.sendMail(mailOptions, (error, response) => {
-    //   error ? console.log(error) : console.log(response);
-    //   smtpTransport.close();
-    // });
-
     return await new Promise((resolve, reject) => {
       return smtpTransport.sendMail(mailOptions, (error, info) => {
         if (error) {

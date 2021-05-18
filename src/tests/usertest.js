@@ -1,14 +1,11 @@
 // Import the dependencies for testing
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import app from '../index';
-// Configure chai
 chai.use(chaiHttp);
 chai.should();
 
 const { expect } = chai;
 let token;
-let categoryId;
 
 describe('Testing user endpoints:', () => {
   it('It should result Login', (done) => {
@@ -60,12 +57,8 @@ describe('Testing user endpoints:', () => {
       .set({ Authorization: token })
       .end((err, res) => {
         if (err) done(err);
-
-        // console.log(res);
-        // categoryId = res.body.data.id;
         expect(res).to.have.status(200);
         expect(res.body.success).to.equals(true);
-        // expect(res.body.message).to.equals('Created');
         expect(res.body.data).to.be.an('array');
         done();
       });
@@ -86,40 +79,6 @@ describe('Testing user endpoints:', () => {
         done();
       });
   });
-
-  //   it('should updagte dwrCategory', (done) => {
-  //     const projectId = 1;
-  //     let r = Math.random().toString(36).substring(7);
-  //     const category = {
-  //       project_id: 1,
-  //       category_name: r,
-  //     };
-  //     chai
-  //       .request(app)
-  //       .put(`/api/budget/category/${categoryId}/${projectId}`)
-  //       .set({ Authorization: token })
-  //       .send(category)
-  //       .end((err, res) => {
-  //         expect(res).to.have.status(200);
-  //         expect(res.body.success).to.equals(true);
-  //         expect(res.body.message).to.equals('Updated');
-  //         done();
-  //       });
-  //   });
-
-  //   it('should delete the budget category', (done) => {
-  //     const projectId = 1;
-  //     chai
-  //       .request(app)
-  //       .delete(`/api/budget/category/${categoryId}/${projectId}`)
-  //       .set({ Authorization: token })
-  //       .end((err, res) => {
-  //         expect(res).to.have.status(200);
-  //         expect(res.body.success).to.equals(true);
-  //         expect(res.body.message).to.equals('Deleted');
-  //         done();
-  //       });
-  //   });
 });
 
 describe('Testing profile endpoints:', () => {
@@ -136,12 +95,11 @@ describe('Testing profile endpoints:', () => {
       });
   });
 
-  it( 'It should update profile', ( done ) =>
-  {
-     const body = {
-       project_id: 1,
-       category_name: r,
-     };
+  it('It should update profile', (done) => {
+    const body = {
+      project_id: 1,
+      category_name: r,
+    };
     chai
       .request('http://localhost:5000')
       .get(`/api/v1/profile/1`)

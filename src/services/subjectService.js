@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:20:49
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-12 19:05:40
+ * @Last Modified time: 2021-05-18 18:23:41
  */
 
 import studentRepository from '../repositories/studentRepository';
@@ -12,7 +12,6 @@ class SubjectService {
   addSubject(requestBody) {
     //remove after the project
     const { subjectCode, subject } = requestBody;
-    console.log('xxxxxxxxxx', academicYear);
     const body = {
       subject_code: subjectCode,
       subject: subject,
@@ -34,7 +33,6 @@ class SubjectService {
 
   async fetchSubjectByStudentIdAndYear(user, year) {
     const student = await studentRepository.fetchStudentByUserId(user.userId);
-    // console.log(student);
     return subjectRepository.fetchSubjectByStudentIdAndYear(student.id, year);
   }
 

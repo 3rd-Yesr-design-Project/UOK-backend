@@ -15,16 +15,13 @@ class FriendService {
     return friendRepository.fetchFriend(user.userId, friendId);
   }
 
-  async fetchFriends(user) {
-    const a = await friendRepository.fetchFriends(user.userId);
-    console.log('aaaaaaaaaa', a);
-    return a;
+  fetchFriends(user) {
+    return friendRepository.fetchFriends(user.userId);
   }
 
   async changeRequestStatus(requestId, requestBody) {
     const { status } = requestBody;
     const request = await friendRepository.fethRequestByRequestId(requestId);
-    console.log('ggggggggggggggggggggg', request);
     const newReq = {
       user_id: request.friend_id,
       friend_id: request.user_id,
