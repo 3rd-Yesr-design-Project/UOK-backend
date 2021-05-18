@@ -122,4 +122,36 @@ route.put(
   authentication.GrantAccess(),
   subjectController.updateResult
 );
+
+//friedn
+route.post(
+  '/api/v1/friend',
+  authentication.GrantAccess(),
+  friendController.addFriend
+);
+route.get(
+  '/api/v1/friend/friend/:friendId',
+  authentication.GrantAccess(),
+  friendController.fetchFriend
+);
+route.get(
+  '/api/v1/friend/all-friends',
+  authentication.GrantAccess(),
+  friendController.fetchFriends
+);
+route.put(
+  '/api/v1/friend/:requestId',
+  authentication.GrantAccess(),
+  friendController.changeRequestStatus
+);
+route.delete(
+  '/api/v1/friend/:requestId',
+  authentication.GrantAccess(),
+  friendController.deleteFriendRequest
+);
+route.get(
+  '/api/v1/friend/pending',
+  authentication.GrantAccess(),
+  friendController.getFriendRequest
+);
 export default route;
