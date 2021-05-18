@@ -16,6 +16,7 @@ class FriendController {
     try {
       const friendId = req.params.friendId;
       const friend = await friendService.fetchFriend(req.user, friendId);
+      console.log('yyyyyyyyyyyyyyy', friend);
       resHelper.responseData(res, friend);
     } catch (error) {
       console.log(error);
@@ -43,7 +44,7 @@ class FriendController {
 
   async deleteFriendRequest(req, res) {
     try {
-      await friendService.deleteFriendRequest(req.params.requestId);
+      await friendService.deleteFriendRequest(req.user, req.params.requestId);
       resHelper.deleted(res);
     } catch (error) {
       console.log(error);

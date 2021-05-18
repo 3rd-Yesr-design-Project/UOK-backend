@@ -92,12 +92,12 @@ route.post(
   friendController.addFriend
 );
 route.get(
-  '/api/v1/friend/:friendId',
+  '/api/v1/friend/friend/:friendId',
   authentication.GrantAccess(),
   friendController.fetchFriend
 );
 route.get(
-  '/api/v1/all-friends',
+  '/api/v1/friend/all-friends',
   authentication.GrantAccess(),
   friendController.fetchFriends
 );

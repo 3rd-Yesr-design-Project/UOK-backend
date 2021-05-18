@@ -11,9 +11,10 @@ class FriendRepository {
   }
 
   fetchFriends(userId) {
+    console.log('uuuuuuuuuuuuu', userId);
     return Friend.findAll({
-      include: [{ model: User, attributes: ['id', 'name'] }],
-      where: { user_id: userId },
+      include: [{ model: User, as: 'friend', attributes: ['id', 'name'] }],
+      where: { user_id: userId, status: 'accept' },
     });
   }
 
@@ -21,12 +22,17 @@ class FriendRepository {
     return Friend.update(body, { where: { id: requestId } });
   }
 
-  deleteFriendRequest(requestId) {
-    return Friend.destroy({ where: { id: requestId } });
+  fethRequestByRequestId(requestId) {
+    return Friend.findOne({ where: { id: requestId } });
+  }
+
+  deleteFriendRequest(userId, friendId) {
+    return Friend.destroy({ where: { user_id: userId, friend_id: friendId } });
   }
 
   getFriendRequest(userId) {
     return Friend.findAll({
+      include: [{ model: User, as: 'user' }],
       where: {
         friend_id: userId,
         status: 'pending',
