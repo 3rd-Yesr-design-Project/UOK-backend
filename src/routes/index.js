@@ -14,8 +14,6 @@ const route = express.Router();
 route.post('/api/v1/user/temp', userController.addUserPassword); //remove after create the project
 route.post('/api/v1/social/login', userController.socialLogin);
 route.post('/api/v1/result/login', userController.resultLogin);
-// route.put('/api/v1/user/profile/:userId',userController.createProfile);
-// route.get('/api/v1/user/:id', userController.fetchUserById);
 route.get(
   '/api/v1/all-user',
   authentication.GrantAccess(),
@@ -109,11 +107,6 @@ route.get(
   authentication.GrantAccess(),
   subjectController.fetchSubjectByStudentIdAndYear
 );
-// route.put('/api/v1/subject/result/:id', subjectController.addSubjectResult);
-// route.get(
-//   '/api/v1/user/subject/:year/:studentNo',
-//   subjectController.fetchStudentSubjectByStudentNoAndYear
-// );
 route.get(
   '/api/v1/year/subject/:year',
   authentication.GrantAccess(),

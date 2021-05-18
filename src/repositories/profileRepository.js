@@ -2,11 +2,10 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:11
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-15 13:26:21
+ * @Last Modified time: 2021-05-18 11:25:30
  */
 
 const Profile = require('../models').profiles;
-const User = require('../models').users;
 
 class ProfileRepository {
   createProfile(body) {
@@ -21,15 +20,6 @@ class ProfileRepository {
       returning: true,
     });
   }
-
-  // fetchProfileByUserId(userId) {
-  //   return Profile.findOne({
-  //     include: [{ model: User }],
-  //     where: {
-  //       user_id: userId,
-  //     },
-  //   });
-  // }
 }
 
 const profileRepository = new ProfileRepository();

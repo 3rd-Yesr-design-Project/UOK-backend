@@ -11,7 +11,6 @@ class FriendRepository {
   }
 
   fetchFriends(userId) {
-    console.log('uuuuuuuuuuuuu', userId);
     return Friend.findAll({
       include: [{ model: User, as: 'friend', attributes: ['id', 'name'] }],
       where: { user_id: userId, status: 'accept' },

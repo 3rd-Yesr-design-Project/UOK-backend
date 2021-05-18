@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:41
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-11 10:02:09
+ * @Last Modified time: 2021-05-18 11:23:44
  */
 
 import subjectService from '../services/subjectService';
@@ -69,17 +69,6 @@ class SubjectController {
     }
   }
 
-  // async fetcbSubjectByUserId(req,res){
-  //     try {
-  //         const userId = req.params.userId;
-  //         const year = req.params.year;
-  //         const subjects = await subjectService.fetchSubjectByUserIdAndYear(userId,year);
-  //         resHelper.responseData(res,subjects)
-  //     } catch (error) {
-  //         resHelper.serverFailing(res,error.message)
-  //     }
-  // }
-
   async fetchSubjectByYear(req, res) {
     try {
       const subjects = await subjectService.fetchSubjectByYear(req.params.year);
@@ -105,7 +94,6 @@ class SubjectController {
   }
 
   async updateResult(req, res) {
-    console.log('xxxxxxxxxxx');
     try {
       await subjectService.updateResult(req.body);
       resHelper.updated(res);

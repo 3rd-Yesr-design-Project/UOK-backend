@@ -2,10 +2,8 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:22:45
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-11 09:35:09
+ * @Last Modified time: 2021-05-18 11:26:30
  */
-
-import { Op } from 'sequelize';
 
 const Subject = require('../models').subjects;
 const Student = require('../models').students;
@@ -23,25 +21,7 @@ class SubjectRepository {
   }
 
   async fetchSubjectByStudentIdAndYear(studentId, year) {
-    console.log(studentId, year);
-    // return Student.findOne({
-    //   // attributes: [],
-    //   include: [
-    //     {
-    //       model: Subject,
-    //       as: 'subjects',
-    //       where: {
-    //         year: year,
-    //       },
-    //     },
-    //   ],
-    //   where: {
-    //     id: studentId,
-    //   },
-    // });
-
     return Student.findOne({
-      // attributes: [],
       include: [
         {
           model: Result,
@@ -60,7 +40,6 @@ class SubjectRepository {
   }
 
   async getStudentSubjectByStudentNoAndYear(year, studentNo) {
-    console.log('sssssssss', studentNo);
     return User.findOne({
       include: [
         {
@@ -88,7 +67,6 @@ class SubjectRepository {
   }
 
   fetchStudentsBySubjectAndAcedemicYear(subjectId, academicYear) {
-    console.log('bbbbbbbbbb', subjectId, academicYear);
     return Result.findAll({
       include: [{ model: Student }],
       where: {
@@ -96,17 +74,6 @@ class SubjectRepository {
         academic_year: academicYear,
       },
     });
-    // return Student.findAll({
-    //   include: [
-    //     {
-    //       model: Subject,
-    //       as: 'subjects',
-    //       through: {
-    //         where: { subject_id: subjectId, academic_year: academicYear },
-    //       },
-    //     },
-    //   ],
-    // });
   }
 
   updateResultById(id, body) {

@@ -2,7 +2,7 @@
  * @Author: Anjana (anjanashakthi95@gmail.com)
  * @Date: 2021-04-30 06:19:17
  * @Last Modified by: Anjana (anjanashakthi95@gmail.com)
- * @Last Modified time: 2021-05-10 08:53:54
+ * @Last Modified time: 2021-05-18 11:27:56
  */
 
 import postService from '../services/PostService';
@@ -12,8 +12,6 @@ class PostController {
   async fetchPosts(req, res) {
     try {
       const posts = await postService.fetchPosts();
-      console.log(posts);
-
       resHelper.responseData(res, posts);
     } catch (error) {
       console.log(error);

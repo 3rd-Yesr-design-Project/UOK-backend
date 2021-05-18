@@ -1,4 +1,3 @@
-import friends from '../models/friends';
 import friendService from '../services/friendService';
 import resHelper from '../utils/Helpers/resHelper';
 
@@ -16,7 +15,6 @@ class FriendController {
     try {
       const friendId = req.params.friendId;
       const friend = await friendService.fetchFriend(req.user, friendId);
-      console.log('yyyyyyyyyyyyyyy', friend);
       resHelper.responseData(res, friend);
     } catch (error) {
       console.log(error);
